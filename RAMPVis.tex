@@ -1,0 +1,150 @@
+\documentclass{egpubl}
+\usepackage{eurovis2023}
+
+% --- for  Annual CONFERENCE
+% \ConferenceSubmission   % uncomment for Conference submission
+% \ConferencePaper        % uncomment for (final) Conference Paper
+% \STAR                   % uncomment for STAR contribution
+% \Tutorial               % uncomment for Tutorial contribution
+% \ShortPresentation      % uncomment for (final) Short Conference Presentation
+% \Areas                  % uncomment for Areas contribution
+% \MedicalPrize           % uncomment for Medical Prize contribution
+% \Education              % uncomment for Education contribution
+% \Poster                 % uncomment for Poster contribution
+% \DC                     % uncomment for Doctoral Consortium
+%
+% --- for  CGF Journal
+% \JournalSubmission    % uncomment for submission to Computer Graphics Forum
+% \JournalPaper         % uncomment for final version of Journal Paper
+%
+% --- for  CGF Journal: special issue
+% \SpecialIssueSubmission    % uncomment for submission to , special issue
+\SpecialIssuePaper         % uncomment for final version of Computer Graphics Forum, special issue
+%                          % EuroVis, SGP, Rendering, PG
+% --- for  EG Workshop Proceedings
+% \WsSubmission      % uncomment for submission to EG Workshop
+% \WsPaper           % uncomment for final version of EG Workshop contribution
+% \WsSubmissionJoint % for joint events, for example ICAT-EGVE
+% \WsPaperJoint      % for joint events, for example ICAT-EGVE
+% \Expressive        % for SBIM, CAe, NPAR
+% \DigitalHeritagePaper
+% \PaperL2P          % for events EG only asks for License to Publish
+
+% --- for EuroVis
+% for full papers use \SpecialIssuePaper
+% \STAREurovis   % for EuroVis additional material
+% \EuroVisPoster % for EuroVis additional material
+% \EuroVisShort  % for EuroVis additional material
+
+% !! *please* don't change anything above
+% !! unless you REALLY know what you are doing
+% ------------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage{dfadobe}
+
+
+% \usepackage{cite}  % comment out for biblatex with backend=biber
+% ---------------------------
+\biberVersion
+\BibtexOrBiblatex
+\usepackage[backend=biber,bibstyle=EG,citestyle=alphabetic,backref=true,url=false]{biblatex}
+%\addbibresource{egbibsample.bib}
+
+\renewbibmacro*{doi+eprint+url}{%
+    \printfield{doi}%
+    \newunit\newblock%
+    \iftoggle{bbx:eprint}{%
+        \usebibmacro{eprint}%
+    }{}%
+    \newunit\newblock%
+    \iffieldundef{doi}{%
+        \usebibmacro{url+urldate}}%
+        {}%
+    }
+
+\addbibresource{reference.bib}
+
+\newcommand{\citetitlea}[1]{\citefield{#1}{title}}
+
+% ---------------------------
+\electronicVersion
+\PrintedOrElectronic
+% for including postscript figures
+% mind: package option 'draft' will replace PS figure by a filename within a frame
+\ifpdf \usepackage[pdftex]{graphicx} \pdfcompresslevel=9
+\else \usepackage[dvips]{graphicx} \fi
+
+\usepackage{egweblnk}
+% end of prologue
+
+\usepackage{float,hhline,hyperref,array,tabulary,tabularx,etoolbox,multirow}
+
+\newcommand{\algorithmautorefname}{Algorithm}
+
+\usepackage{dblfloatfix}
+
+\usepackage[table, dvipsnames]{xcolor}
+
+\usepackage{multicol}
+
+% For cover's captionof
+\usepackage[font=normalfont,labelfont=bf]{caption}
+
+\include{preamble/preamble.basic}
+\include{preamble/preamble.main}
+\include{preamble/preamble.math}
+\include{preamble/preamble.draft}
+
+\usepackage[nameinlink]{cleveref}
+
+\begin{document}
+
+% \author[Q. Wang, K. Xu \& R. S. Laramee]
+\author[Authors]
+{
+% \parbox{\textwidth}{\centering Q. Wang, K. Xu and R. S. Laramee}
+% \\
+% \parbox{\textwidth}{\centering School of Computer Science, University of Nottingham, UK \\ \begin{center}
+\parbox{\textwidth}{\centering Authors }
+\\
+\parbox{\textwidth}{\centering Affiliation \\
+}
+}
+
+\title{Overview of Time Series}
+
+\pagestyle{plain}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\input{section/introduction}
+
+% \input{section/related}
+
+% \input{section/data}
+
+% \input{section/main}
+
+% \input{section/evaluation}
+
+% \input{section/limitation}
+
+% \input{section/conclusion}
+
+% \section{Acknowledgments}
+% This work is funded by the grant EP/S010238/2 from the Engineering and Physical Sciences Research Council (EPSRC). EPSRC is a British Research Council that provides government funding for grants to undertake research and postgraduate degrees in engineering and the physical sciences.
+
+% reset \section command for section title "References"
+\let\section=\origsection
+\printbibliography
+
+\clearpage
+
+% \input{section/appendix}
+
+\end{document}
