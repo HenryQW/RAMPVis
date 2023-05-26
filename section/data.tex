@@ -1,1 +1,67 @@
 \section{Data Description}
+\label{sec:Data}
+
+The data used in our work includes simulation parameters and outcomes from an ABC-SMC inference model \cite{toni2008Approximate} built by a group of modellers from University of Edinburgh, University of Exeter, University of Glasgow, and London School of Hygiene \& Tropical Medicine. The underlying pandemic data was collected during the first wave of the outbreak in Scotland. The model was built to analyze the data and infer the parameters of the model that best fit the data. The model was run 1,000 times with different random seeds to generate a set of 160 parameter sets. The model has 16 input parameters (See \Cref{tab:16params}) and 4 output parameters (See \Cref{tab:outparams}):
+
+\begin{table}[htbp]
+    \centering
+    \caption{16 input parameters used for the ABC-SMC inference model.}
+    \label{tab:16params}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{|l|c|p{9.25cm}|}
+            \hline
+            \textbf{ID} & \textbf{Compart} & \textbf{Description}                                                                                        \\
+            \hline
+            S           & 0                & Number of susceptible individuals (not infected).                                                           \\
+            \hline
+            E           & 1                & Number of infected individuals but not yet infectious (exposed).                                            \\
+            \hline
+            E\_t        & 2                & Number of exposed individuals and tested positive.                                                          \\
+            \hline
+            I\_p        & 3                & Number of infected and infectious symptomatic individuals but at pre-clinical stage (show yet no symptoms). \\
+            \hline
+            I\_t        & 4                & Number of tested positive individuals that are infectious.                                                  \\
+            \hline
+            I1          & 5                & Number of infected and infectious asymptomatic individuals: first stage.                                    \\
+            \hline
+            I2          & 6                & Number of infected and infectious asymptomatic individuals: second stage.                                   \\
+            \hline
+            I3          & 7                & Number of infected and infectious asymptomatic individuals: third stage.                                    \\
+            \hline
+            I4          & 8                & Number of infected and infectious asymptomatic individuals: last stage.                                     \\
+            \hline
+            I\_s1       & 9                & Number of infected and infectious symptomatic individuals: first stage.                                     \\
+            \hline
+            I\_s2       & 10               & Number of infected and infectious symptomatic individuals: second stage.                                    \\
+            \hline
+            I\_s3       & 11               & Number of infected and infectious symptomatic individuals: third stage.                                     \\
+            \hline
+            I\_s4       & 12               & Number of infected and infectious symptomatic individuals: last stage.                                      \\
+            \hline
+            H           & 13               & Number of infected individuals that are hospitalized.                                                       \\
+            \hline
+            R           & 14               & Number of infected individuals that have recovered from the infection.                                      \\
+            \hline
+            D           & 15               & Number of deceased individuals due to the disease.                                                          \\
+            \hline
+        \end{tabular}%
+    }
+\end{table}
+
+\begin{table}[htbp]
+    \centering
+    \caption{Description of output parameters.}
+    \label{tab:outparams}
+    \resizebox{\columnwidth}{!}{%
+        \begin{tabular}{|l|p{10cm}|}
+            \hline
+            \textbf{Name} & \textbf{Description}                                                                    \\ \hline
+            iterID        & The simulation number.                                                                   \\ \hline
+            age\_group    & The age group of the population.                                                         \\ \hline
+            comparts      & The epidemiological compartment number or the parameter space (See \Cref{tab:16params}). \\ \hline
+            value         & The population of that compartment at the end of the simulation run.                     \\ \hline
+        \end{tabular}%
+    }
+\end{table}
+
+The resulting output file is a CSV file that is over 6GB in size.
