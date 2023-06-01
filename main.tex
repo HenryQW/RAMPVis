@@ -76,6 +76,9 @@
 
 \usepackage[nameinlink]{cleveref}
 \usepackage[nolist,nohyperlinks]{acronym}
+
+\newcommand{\bobgraph}[1]{ \par\medskip \noindent\textbf{#1} \phantomsection \label{bobgraph:{#1}} \par\medskip}
+
 \acrodef{VIS}{Data Visualization and Visual Analytics}
 \acrodef{SCRC}{The Scottish COVID-19 Response Consortium}
 
@@ -169,9 +172,9 @@
 % a grant from XYZ.}
 
 %\bibliographystyle{abbrv}
-% \bibliographystyle{abbrv-doi}
+\bibliographystyle{abbrv-doi}
 %\bibliographystyle{abbrv-doi-narrow}
-\bibliographystyle{abbrv-doi-hyperref}
+% \bibliographystyle{abbrv-doi-hyperref}
 %\bibliographystyle{abbrv-doi-hyperref-narrow}
 
 \bibliography{RAMPVIS}

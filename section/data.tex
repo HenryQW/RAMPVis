@@ -1,9 +1,7 @@
 \section{Data Description}
 \label{sec:Data}
 
-The data used in our work includes simulation parameters and outcomes from an ABC-SMC inference model \cite{toni2008Approximate} built by a group of modelers from University of Edinburgh, University of Exeter, University of Glasgow, and London School of Hygiene \& Tropical Medicine. The underlying pandemic data was collected during the first wave of the outbreak in Scotland. The model was built to analyze the data and infer the parameters of the model that best fit the data. The model was run 1,000 times with different random seeds to generate a set of 160 parameter sets. The model has 16 input parameters (See \Cref{tab:16params}) and 4 output parameters (See \Cref{tab:outparams}):
-
-\begin{table}[tb!]
+\begin{table}[htb!]
     \centering
     \caption{16 input parameters used for the ABC-SMC inference model.}
     \label{tab:16params}
@@ -48,7 +46,7 @@ The data used in our work includes simulation parameters and outcomes from an AB
     }
 \end{table}
 
-\begin{table}[tb!]
+\begin{table}[htb!]
     \centering
     \caption{Description of output parameters.}
     \label{tab:outparams}
@@ -64,4 +62,6 @@ The data used in our work includes simulation parameters and outcomes from an AB
     }
 \end{table}
 
-The resulting output file is a CSV file that is over 6GB in size.
+The data used in our work includes simulation parameters and outcomes from an ABC-SMC inference model \cite{toni2008Approximate} built by a group of modelers from University of Edinburgh, University of Exeter, University of Glasgow, and London School of Hygiene \& Tropical Medicine. The underlying pandemic data was collected during the first wave of the outbreak in Scotland. The model was built to analyze the data and infer the parameters of the model that best fit the data. The model was run 1,000 times with different random seeds to generate a set of 160 parameter sets. The model has 16 input parameters (See \Cref{tab:16params}) and 4 output parameters (See \Cref{tab:outparams}). The resulting output file is a CSV file that is over 6GB in size.
+
+It is worth mentioning that after plotting the output data using a line chart, an error was immediately spotted, see \Cref{fig:teaser}D, where an unusual spike at day 20 can be observed. The modelers were notified and the bug was fixed. However, the rectified output file was never made available to us.
