@@ -1,5 +1,7 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
+\PassOptionsToPackage{x11names}{xcolor}
+
 \documentclass{vgtc}                          % final (conference style)
 %\documentclass[review]{vgtc}                 % review
 %\documentclass[widereview]{vgtc}             % wide-spaced review
@@ -77,14 +79,22 @@
 \usepackage[nameinlink]{cleveref}
 \usepackage[nolist,nohyperlinks]{acronym}
 
-\newcommand{\bobgraph}[1]{ \par\medskip \noindent\textbf{#1} \phantomsection \label{bobgraph:{#1}} \par\medskip}
+\newcommand{\bobgraph}[1]{%
+    \par\medskip
+    \noindent\textbf{#1}%
+    \par\medskip
+}
+
+\newcommand{\newtext}[1]{%
+    \textcolor{red}{#1}%
+}
 
 \acrodef{VIS}{Data Visualization and Visual Analytics}
 \acrodef{SCRC}{The Scottish COVID-19 Response Consortium}
 
 %% Paper title.
 
-\title{EnsembleVis: A Retrospective and Early History}
+\title{EnsembleVis View and Volunteers: A Retrospective and Early History}
 
 %% This is how authors are specified in the conference style
 
@@ -105,13 +115,13 @@
      \scriptsize University of Nottingham}
 
 %% A teaser figure can be included as follows
-\teaser{
-  \centering
-  \includegraphics[width=\linewidth]{overview.png}
-  \caption{An overview of EnsembleVis, an interactive dashboard designed for visualizing the input parameters and outcomes of an ABC-smc inference model used for analyzing COVID-19 data collected during the first wave of the outbreak in Scotland \cite{2020Covid19}. Its main purpose is to facilitate a better understanding of the complex dynamics of the pandemic by presenting the relationships between different sets of input parameters and the resulting outcomes in a clear and intuitive manner. A detailed description of the dashboard can be found in \Cref{sec:EnsembleVis}.
-  }
-  \label{fig:teaser}
-}
+% \teaser{
+%   \centering
+%   \includegraphics[width=\linewidth]{overview.png}
+%   \caption{An overview of EnsembleVis, an interactive dashboard designed for visualizing the input parameters and outcomes of an Approximate Bayesian Computation Sequential Monte Carlo (ABC-SMC) inference model used for analyzing COVID-19 data collected during the first wave of the outbreak in Scotland \cite{2020Covid19}. Its main purpose is to facilitate a better understanding of the complex dynamics of the pandemic by presenting the relationships between different sets of simulation input parameters and the resulting outcomes in a clear and intuitive manner. A detailed description of the dashboard can be found in \Cref{sec:EnsembleVis}.
+%   }
+%   \label{fig:teaser}
+% }
 
 %% Abstract section.
 \abstract{
@@ -160,7 +170,7 @@
 
 \input{section/main}
 
-% \input{section/evaluation}
+\input{section/evaluation}
 
 \input{section/limitation}
 
@@ -171,10 +181,10 @@
 % The authors wish to thank A, B, and C. This work was supported in part by
 % a grant from XYZ.}
 
-%\bibliographystyle{abbrv}
-\bibliographystyle{abbrv-doi}
+% \bibliographystyle{abbrv}
+% \bibliographystyle{abbrv-doi}
 %\bibliographystyle{abbrv-doi-narrow}
-% \bibliographystyle{abbrv-doi-hyperref}
+\bibliographystyle{abbrv-doi-hyperref}
 %\bibliographystyle{abbrv-doi-hyperref-narrow}
 
 \bibliography{RAMPVIS}
