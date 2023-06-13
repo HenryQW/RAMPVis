@@ -3,65 +3,102 @@
 
 \begin{table}[tb!]
     \centering
-    \caption{16 input parameters used for the ABC-SMC inference model.}
-    \label{tab:16params}
+    \caption{16 input parameters for the ABC-SMC inference model. The constant $K$ here is ignored in our visual designs.}
+    \label{tab:input_params}
     \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{|l|c|p{9.25cm}|}
+        \begin{tabular}{|l|l|}
             \hline
-            \textbf{ID} & \textbf{Compart} & \textbf{Description}                                                                                        \\
+            \textbf{Name} & \textbf{Description}                                                       \\
             \hline
-            S           & 0                & Number of susceptible individuals (not infected).                                                           \\
             \hline
-            E           & 1                & Number of infected individuals but not yet infectious (exposed).                                            \\
+            T\_lat        & Mean latent period (days)                                                  \\
             \hline
-            E\_t        & 2                & Number of exposed individuals and tested positive.                                                          \\
+            juvp\_s       & Probability of juvenile developing symptoms                                \\
             \hline
-            I\_p        & 3                & Number of infected and infectious symptomatic individuals but at pre-clinical stage (show yet no symptoms). \\
+            T\_inf        & Mean asymptomatic period (days)                                            \\
             \hline
-            I\_t        & 4                & Number of tested positive individuals that are infectious.                                                  \\
+            T\_rec        & Mean time to recovery if symptomatic (days)                                \\
             \hline
-            I1          & 5                & Number of infected and infectious asymptomatic individuals: first stage.                                    \\
+            T\_sym        & Mean symptomatic period prior to hospitalization (days)                    \\
             \hline
-            I2          & 6                & Number of infected and infectious asymptomatic individuals: second stage.                                   \\
+            T\_hos        & Mean hospitalization stay (days)                                           \\
             \hline
-            I3          & 7                & Number of infected and infectious asymptomatic individuals: third stage.                                    \\
+            inf\_asym     & Reduction factor of infectiousness for asymptomatic infectious individuals \\
             \hline
-            I4          & 8                & Number of infected and infectious asymptomatic individuals: last stage.                                     \\
+            p\_inf        & Probability of Infection                                                   \\
             \hline
-            I\_s1       & 9                & Number of infected and infectious symptomatic individuals: first stage.                                     \\
+            p\_hcw        & Probability of Infection (Healthcare Worker)                               \\
             \hline
-            I\_s2       & 10               & Number of infected and infectious symptomatic individuals: second stage.                                    \\
+            c\_hcw        & Mean number of Healthcare Worker contacts per day                          \\
             \hline
-            I\_s3       & 11               & Number of infected and infectious symptomatic individuals: third stage.                                     \\
+            d             & Proportion of population observing social distancing                       \\
             \hline
-            I\_s4       & 12               & Number of infected and infectious symptomatic individuals: last stage.                                      \\
+            q             & Proportion of normal contact made by people self-isolating                 \\
             \hline
-            H           & 13               & Number of infected individuals that are hospitalized.                                                       \\
+            p\_s          & Age-dependent probability of developing symptoms                           \\
             \hline
-            R           & 14               & Number of infected individuals that have recovered from the infection.                                      \\
+            rrd           & Risk of death if not hospitalized                                          \\
             \hline
-            D           & 15               & Number of deceased individuals due to the disease.                                                          \\
+            lambda        & Background transmission rate                                               \\
             \hline
-        \end{tabular}%
+            K             & Hospital bed capacity                                                      \\
+            \hline
+        \end{tabular}
     }
 \end{table}
 
 \begin{table}[tb!]
     \centering
-    \caption{Description of output parameters of the simulation model.}
-    \label{tab:outparams}
+    \caption{13 output parameters from the simulation performed by the ABC-SMC inference model.}
+    \label{tab:output_param}
     \resizebox{\columnwidth}{!}{%
-        \begin{tabular}{|l|p{10cm}|}
+        \begin{tabular}{|l|p{9.25cm}|}
             \hline
-            \textbf{Name} & \textbf{Description}                                                                    \\ \hline
-            iterID        & The simulation number.                                                                   \\ \hline
-            age\_group    & The age group of the population.                                                         \\ \hline
-            comparts      & The epidemiological compartment number or the parameter space (See \Cref{tab:16params}). \\ \hline
-            value         & The population of that compartment at the end of the simulation run.                     \\ \hline
+            \textbf{Name} & \textbf{Description}
+            \\
+            \hline
+            \hline
+
+            iter          & The simulation number.
+            \\
+            \hline
+            day           & The day number.
+            \\
+            \hline
+            age\_group    & The age group of the population.
+            \\
+            \hline
+            S             & Number of susceptible individuals (not infected).                                                           \\
+            \hline
+            E             & Number of infected individuals but not yet infectious (exposed).                                            \\
+            \hline
+            E\_t          & Number of exposed individuals and tested positive.                                                          \\
+            \hline
+            I\_p          & Number of infected and infectious symptomatic individuals but at pre-clinical stage (show yet no symptoms). \\
+            \hline
+            I\_t          & Number of tested positive individuals that are infectious.                                                  \\
+            \hline
+            I            & Number of infected and infectious asymptomatic individuals.                                    \\
+            \hline
+            I\_s         & Number of infected and infectious symptomatic individuals.                                     \\
+            \hline
+            H             & Number of infected individuals that are hospitalized.                                                       \\
+            \hline
+            R             & Number of infected individuals that have recovered from the infection.                                      \\
+            \hline
+            D             & Number of deceased individuals due to the disease.                                                          \\
+            \hline
         \end{tabular}%
     }
 \end{table}
 
-The data used in our work includes simulation parameters and outcomes from an Approximate Bayesian Computation Sequential Monte Carlo (ABC-SMC) inference model \cite{toni2008Approximate} developed by a group of modelers from Durham University, University of Edinburgh, University of Exeter, University of Glasgow, and London School of Hygiene \& Tropical Medicine. The underlying pandemic data was collected during the first wave of the outbreak in Scotland spanning a period of 59 days \cite{2020Covid19}. The model was built to analyze the data and infer the parameters of the model that best fit the data. The model was run 1,000 times with different random seeds to generate a set of 160 parameters. The model has 16 input parameters (see \Cref{tab:16params}) and 4 output parameters (see \Cref{tab:outparams}). The resulting output file is a CSV file that is over 6GB in size.
 
-It is worth mentioning that after plotting the output data using a line chart, an error was immediately spotted, see \Cref{fig:1st-line}, where an unusual spike at day 20 can be observed. The modelers were notified and the bug was fixed. However, the rectified output file was never made available to us.
+The data used in our work includes simulation parameters and outcomes from an \ac{ABC-SMC} inference model \cite{toni2008Approximate} developed by a group of modelers from Durham University, the University of Edinburgh, the University of Exeter, the University of Glasgow, and the London School of Hygiene \& Tropical Medicine.
+The underlying pandemic data was collected by NHS Scotland during the first wave of the outbreak in Scotland spanning a period of 59 days \cite{2020Covid19}.
+The model was built to analyze the data and infer the parameters of the model that best fit the data.
+The model has 16 input parameters (see \Cref{tab:input_params}) and 13 output parameters (see \Cref{tab:output_param}), and it performed 1,000 simulations with 160 sets of input parameters that were inferred via random seeding.
+The resulting output file is a CSV file that is over 6GB in size.
+
+It is worth mentioning that after plotting the output data using a line chart, an error was immediately spotted, see \Cref{fig:1st-line}, where an unusual spike at day 20 can be observed.
+The modelers were notified and the bug was fixed.
+However, the rectified output file was never made available to us.
