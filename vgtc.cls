@@ -590,7 +590,7 @@ Manuscript received xx xxx. 201x; accepted xx xxx. 201x. Date of Publication xx 
      \hskip0.0in%needed to make leftskip work
      \hb@xt@\hsize{\ifvgtcjournal\ifx\@captype\@figcaptype\else\hfil\fi\else\hfil\fi\box\@tempboxa\hfil}%
    \fi
-   \if\instring{Table}{#1}\vskip.5\abovecaptionskip\else\vskip\belowcaptionskip\fi}
+   \if\instring{Table}{#1}\vskip.5\abovecaptionskip\else\vskip\belowcaptionskip\vspace{-10pt}\fi}
 
 %% fix the font size of the bibliography to 8pt
  \newdimen\bibindent
